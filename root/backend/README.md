@@ -7,3 +7,6 @@
 - https://blog.logrocket.com/mern-stack-tutorial/ (MERN stack)
 - https://rapidapi.com/blog/weather-app-javascript-nodejs/ (Node and external API)
 - https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786 (.env file)
+
+# General Tips
+- If getting errors after `npm start` try `npm install`

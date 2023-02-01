@@ -1,9 +1,12 @@
-// File utilizes Node.js and Express.js to create the application server 
-// Access via https://localhost:3001
+// File utilizes Node.js and Express.js to create the Application Server
+    // Application Server facilitates requests from frontend -> backend
+// Access server via http://localhost:${port}
 
 const express = require('express');
-
 const app = express();
+
+// So the program can find .env file
+require('dotenv').config();
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
