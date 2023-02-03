@@ -5,13 +5,27 @@
 const express = require('express');
 const respRoute = require('./routes/response')
 
+// To pass `Access-Control-Allow-Origin` error
+const cors = require('cors');
+
 // So the program can find .env file
 require('dotenv').config();
 
 const app = express();
 
+// cors
+app.use(cors({ origin: true, credentials: true }));
+
+// Init Middleware
+// The express.json method allows Express to read data sent using a POST or PUT request
+// It is used for recognizing incoming objects as JSON objects
+app.use(express.json({ extended: false }));
+
 // TODO: Update route
-app.use(respRoute)
+// Use defined routes
+app.use('/response', respRoute)
+
+app.get('/', (req, res) => res.send('Hello world!'));
 
 const port = process.env.PORT || 3001;
 
