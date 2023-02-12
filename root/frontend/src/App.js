@@ -1,19 +1,18 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
-// TODO: Replace with page once applicable
-import TextBox from './components/TextBox';
+import MainPage from './pages/MainPage';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div>
         <Routes>
-          <Route exact path='/' element={<TextBox name="Max"/>} />
+          <Route exact path='/' element={<MainPage />} />
         </Routes>
       </div>
     </Router>
   );
-};
+}
 
 export default App;
