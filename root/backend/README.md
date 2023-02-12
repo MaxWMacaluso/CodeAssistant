@@ -7,6 +7,7 @@
 - Node:
     - https://vegibit.com/node-js-express-rest-api-tutorial/ (Node and Express)
     - https://rapidapi.com/blog/weather-app-javascript-nodejs/ (Node and external API)
+    - https://stackoverflow.com/questions/60353587/how-to-make-call-to-external-api-from-nodejs (External API call in route)
 - .env File:
     - https://www.twilio.com/blog/working-with-environment-variables-in-node-js-html (.env file)
 - Javascript Classes/OOP
