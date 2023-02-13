@@ -13,6 +13,9 @@
 - https://blog.logrocket.com/the-beginners-guide-to-mastering-react-props-3f6f01fd7099/ (Prop in component call)
 - Code Block:
     - https://github.com/uiwjs/react-textarea-code-editor (npm package)
+- React Guides:
+    - https://reactjs.org/docs/handling-events.html (Events in React)
+    - https://www.pluralsight.com/guides/how-to-capture-the-value-of-dropdown-lists-with-react-bootstrap (Dropdown)
 
 # General Tips
 - If getting errors after `npm start` try `npm install`

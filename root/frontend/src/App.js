@@ -1,6 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 
+// Added for bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+// PAGES
 import MainPage from './pages/MainPage';
 
 const App = () => {
