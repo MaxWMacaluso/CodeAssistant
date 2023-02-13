@@ -1,8 +1,8 @@
 import React from 'react';
-import CodeBlock from '../components/CodeBlock';
+import CodeBox from '../components/CodeBox';
 
 const MainPage = () => {
-    return (<CodeBlock name="Max" />);
+    return (<CodeBox/>);
 }
 
 export default MainPage;
