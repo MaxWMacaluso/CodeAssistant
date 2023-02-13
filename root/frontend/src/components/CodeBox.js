@@ -53,7 +53,7 @@ const CodeButtons = () => {
       </DropdownButton>
 
       {/* Abstraction Level Button */}
-      <DropdownButton onSelect = {handleLevel} id = "level" title = "Level">
+      <DropdownButton onSelect = {handleLevel} id = "level" title = "Detail Level">
         <Dropdown.Item eventKey="low">Low</Dropdown.Item>
         <Dropdown.Item eventKey="high">High</Dropdown.Item>
       </DropdownButton>
