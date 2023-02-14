@@ -9,10 +9,11 @@ function simulateNetworkRequest() {
   return new Promise((resolve) => setTimeout(resolve, 2000));
 }
 
-const CodeButtons = () => {
+const CodeBox = () => {
   const [isLoading, setLoading] = useState(false);
   const [code, setCode] = useState('function add(a, b) {\n  return a + b;\n}');
-  var language = 'python';
+  const [language, setLanguage] = useState('python');
+  const [level, setLevel] = useState('low');
 
   useEffect(() => {
     if (isLoading) {
@@ -20,21 +21,29 @@ const CodeButtons = () => {
     }
   }, [isLoading]);
 
-  // TODO: Alter
-  const handleSubmit = () => {
-    console.log(code);
-    setLoading(true);
-  };
+  // Triggers on CodeEditor change
+  const handleCode = (evt) => {
+    setCode(evt.target.value);
+  }
 
-  // TODO: Alter
-  const handleLanguage = (evt) => {
-    console.log(evt);
-  };
-
-  // TODO: Alter
+  // Triggers on level dropdown change
   const handleLevel = (evt) => {
-    console.log(evt);
-  };
+    setLevel(evt);
+    // console.log(level, evt);
+  }
+
+  // Triggers on language dropdown change
+  const handleLanguage = async (evt) => {
+    setLanguage(evt);
+    // console.log(language, evt);
+  }
+
+  // TODO: Implement
+  // Triggers on submit button click
+  const handleSubmit = () => {
+    // console.log(code);
+    setLoading(true);
+  }
 
   return (
     <div>
@@ -60,6 +69,7 @@ const CodeButtons = () => {
 
       {/* Submit Button */}
       <Button
+        id = "submit"
         variant = "primary"
         disabled = {isLoading}
         onClick = {!isLoading ? handleSubmit : null}
@@ -72,7 +82,7 @@ const CodeButtons = () => {
         value = {code}
         language = {language}
         placeholder = "Enter code here"
-        onChange = {(event) => setCode(event.target.value)}
+        onChange = {handleCode}
         padding = {15}
         data-color-mode = "dark"
         style = {{
@@ -81,8 +91,11 @@ const CodeButtons = () => {
           //   backgroundColor: "#f5f5f5"
         }}
       />
+      <h4>Language: {language}</h4>
+      <h4>Detail Level: {level}</h4>
+      <h4>Code: {code}</h4>
     </div>
   );
 }
 
-export default CodeButtons;
+export default CodeBox;
