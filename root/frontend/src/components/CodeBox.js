@@ -10,16 +10,24 @@ function simulateNetworkRequest() {
 }
 
 const CodeBox = () => {
+  // Query = code + language + level
+  const [code, setCode] = useState('def add(a, b):\n  return a + b');
+  const [language, setLanguage] = useState('');
+  const [level, setLevel] = useState('');
   const [isLoading, setLoading] = useState(false);
-  const [code, setCode] = useState('function add(a, b) {\n  return a + b;\n}');
-  const [language, setLanguage] = useState('python');
-  const [level, setLevel] = useState('low');
 
   useEffect(() => {
     if (isLoading) {
       simulateNetworkRequest().then(() => {setLoading(false)});
     }
   }, [isLoading]);
+
+  // Resets language and level
+  const resetEnv = () => {
+    setCode('def add(a, b):\n  return a + b');
+    setLanguage('');
+    setLevel('');
+  }
 
   // Triggers on CodeEditor change
   const handleCode = (evt) => {
@@ -43,12 +51,13 @@ const CodeBox = () => {
   const handleSubmit = () => {
     // console.log(code);
     setLoading(true);
+    resetEnv();
   }
 
   return (
     <div>
       {/* Programming Language Button */}
-      <DropdownButton onSelect = {handleLanguage} id = "language" title = "Programming Language">
+      <DropdownButton onSelect = {handleLanguage} id = "language" title = {language ? language : 'Programming Language'}>
         <Dropdown.Item eventKey="python">Python</Dropdown.Item>
         <Dropdown.Item eventKey="javascript">Javascript</Dropdown.Item>
         <Dropdown.Item eventKey="go">Go</Dropdown.Item>
@@ -62,7 +71,7 @@ const CodeBox = () => {
       </DropdownButton>
 
       {/* Abstraction Level Button */}
-      <DropdownButton onSelect = {handleLevel} id = "level" title = "Detail Level">
+      <DropdownButton onSelect = {handleLevel} id = "level" title = {level ? level : 'Detail Level'}>
         <Dropdown.Item eventKey="low">Low</Dropdown.Item>
         <Dropdown.Item eventKey="high">High</Dropdown.Item>
       </DropdownButton>
