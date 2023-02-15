@@ -15,13 +15,12 @@ router.get('/test', (req, res) => res.send('Response route working!'));
 // @description query OpenAI API
 // @access Public
 router.post('/', async (req, res) => {
-  // TODO: Set query based off req.body
   try {
     let data = req.body;
-    
     const obj = new OpenAI(data.language, data.level, data.code);
     obj.formQueryFromInputs();
     await obj.makeOpenAICall();
+    
     res.send(obj.response);
   } 
   catch (err) {

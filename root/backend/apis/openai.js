@@ -3,6 +3,22 @@ const { Configuration, OpenAIApi } = require("openai");
 // So the program can find .env file
 require('dotenv').config({path : '../.env'});
 
+// GLOBAL VARIABLE
+// @key language
+// @value {single comment, start comment-block, stop comment-block}
+var LanguageDict = {
+  'Python': {Single: '#', Start: '\"\"\"', Stop: '\"\"\"'},
+  'Javascript': {Single: '//', Start: '/*', Stop: '*/'},
+  'Go': {Single: '//', Start: '/*', Stop: '*/'},
+  'Perl': {Single: '#', Start: '=begin', Stop: '=end'},
+  'PHP': {Single: '//', Start: '/*', Stop: '*/'},
+  'Ruby': {Single: '#', Start: '=begin', Stop: '=end'},
+  'Swift': {Single: '//', Start: '/*', Stop: '*/'},
+  'TypeScript': {Single: '//', Start: '/*', Stop: '*/'},
+  'Sql': {Single: '--', Start: '/*', Stop: '*/'},
+  'Shell': {Single: '#', Start: ": <<\'END'", Stop: 'END'}
+};
+
 class OpenAI {
   // PRIVATE class attributes
   #language;
@@ -56,15 +72,22 @@ class OpenAI {
 
   // METHODS
   // query = code + level + language
+  // TODO: Implement level
   formQueryFromInputs() {
+    const langObj = LanguageDict[this.language]
+    //this.query = '# Python\n' + this.code + '\n\n\"\"\"\nExplain what the above Python code does:';
     // Invokes the setter
-    this.query = '# Python 3\n' + this.code + '\n\n\"\"\"\nExplanation of what the Python 3 code does in bullet points:';
+    this.query = langObj.Single + ' ' + this.language + '\n' + this.code + '\n\n' + langObj.Start + '\n' + 'Explain what the above ' + this.language + ' code does:';
+    console.log(this.query)
   }
   // Perfoms openAI API Call and stores `response.data` result in #response
   async makeOpenAICall() {
     try {
       const configuration = new Configuration({ apiKey: process.env.OPENAI_API_KEY, });
       const openai = new OpenAIApi(configuration);
+
+      const langObj = LanguageDict[this.language]
+      console.log(langObj)
 
       const response = await openai.createCompletion({
         model: "code-davinci-002",
@@ -74,7 +97,7 @@ class OpenAI {
         top_p: 1.0,
         frequency_penalty: 0.0,
         presence_penalty: 0.0,
-        stop: ["\"\"\""],
+        stop: [langObj.Stop],
       });
 
       this.response = response.data;
