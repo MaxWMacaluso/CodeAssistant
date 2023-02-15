@@ -6,6 +6,9 @@ import CodeEditor from '@uiw/react-textarea-code-editor';
 
 import { getOutput } from '../actions/response';
 
+// TODO: Move importing OutputBox functionality to MainPage
+import OutputBox from './OutputBox';
+
 const CodeBox = () => {
   // Query = code + language + level
   const [code, setCode] = useState('def add(a, b):\n  return a + b');
@@ -97,7 +100,7 @@ const CodeBox = () => {
       <h4>Language: {language}</h4>
       <h4>Detail Level: {level}</h4>
       <h4>Code: {code}</h4>
-      <h4>Output: {output}</h4>
+      <OutputBox output = {output}/>
     </div>
   );
 }
