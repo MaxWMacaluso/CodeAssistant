@@ -4,30 +4,29 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 
-// TODO: Replace with call to app-server
-function simulateNetworkRequest() {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
-}
+import { getOutput } from '../actions/response';
 
 const CodeBox = () => {
   // Query = code + language + level
   const [code, setCode] = useState('def add(a, b):\n  return a + b');
   const [language, setLanguage] = useState('');
   const [level, setLevel] = useState('');
+  const [output, setOutput] = useState('');
   const [isLoading, setLoading] = useState(false);
 
+  // TODO: Fix React Hook useEffect has missing dependencies warning
+  // useEffect runs on every render
   useEffect(() => {
     if (isLoading) {
-      simulateNetworkRequest().then(() => {setLoading(false)});
+      const fetchOutput = async () => {
+        let temp = await getOutput(code, language, level);
+        setOutput(temp);
+        setLoading(false);
+      }
+      fetchOutput();
     }
+  // If isLoading updates, the effect will run again
   }, [isLoading]);
-
-  // Resets language and level
-  const resetEnv = () => {
-    setCode('def add(a, b):\n  return a + b');
-    setLanguage('');
-    setLevel('');
-  }
 
   // Triggers on CodeEditor change
   const handleCode = (evt) => {
@@ -37,21 +36,16 @@ const CodeBox = () => {
   // Triggers on level dropdown change
   const handleLevel = (evt) => {
     setLevel(evt);
-    // console.log(level, evt);
   }
 
   // Triggers on language dropdown change
-  const handleLanguage = async (evt) => {
+  const handleLanguage = (evt) => {
     setLanguage(evt);
-    // console.log(language, evt);
   }
 
-  // TODO: Implement
   // Triggers on submit button click
   const handleSubmit = () => {
-    // console.log(code);
     setLoading(true);
-    resetEnv();
   }
 
   return (
@@ -103,6 +97,7 @@ const CodeBox = () => {
       <h4>Language: {language}</h4>
       <h4>Detail Level: {level}</h4>
       <h4>Code: {code}</h4>
+      <h4>Output: {output}</h4>
     </div>
   );
 }

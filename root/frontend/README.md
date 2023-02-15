@@ -10,6 +10,7 @@
 - Axios HTTP Requests:
     - https://blog.logrocket.com/axios-vs-fetch-best-http-requests/ - (Axios vs. JS vanilla fetch)
     - https://zetcode.com/javascript/axios/ (axios GET/POST request)
+    - https://stackabuse.com/making-asynchronous-http-requests-in-javascript-with-axios/ (Async vs Promises)
 - https://blog.logrocket.com/the-beginners-guide-to-mastering-react-props-3f6f01fd7099/ (Prop in component call)
 - Code Block:
     - https://github.com/uiwjs/react-textarea-code-editor (npm package)

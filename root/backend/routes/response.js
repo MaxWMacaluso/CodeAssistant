@@ -17,6 +17,9 @@ router.get('/test', (req, res) => res.send('Response route working!'));
 router.post('/', async (req, res) => {
   // TODO: Set query based off req.body
   try {
+    let data = req.body;
+    console.log(data);
+
     var test = new OpenAI('Python', '1', '2');
     test.formQueryFromInputs();
     await test.makeOpenAICall();
