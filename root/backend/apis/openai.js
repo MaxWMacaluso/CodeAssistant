@@ -72,12 +72,18 @@ class OpenAI {
 
   // METHODS
   // query = code + level + language
-  // TODO: Implement level
+  // TODO: Implement level in lower coupling way
   formQueryFromInputs() {
     const langObj = LanguageDict[this.language]
-    //this.query = '# Python\n' + this.code + '\n\n\"\"\"\nExplain what the above Python code does:';
-    // Invokes the setter
-    this.query = langObj.Single + ' ' + this.language + '\n' + this.code + '\n\n' + langObj.Start + '\n' + 'Explain what the above ' + this.language + ' code does:';
+
+    if (this.level == 'Low') {
+      // Invokes the setter
+      this.query = langObj.Single + ' ' + this.language + '\n' + this.code + '\n\n' + langObj.Start + '\n' + 'Explanation of what the ' + this.language + ' code does in bullet points:';
+    }
+    // High Level
+    else {
+      this.query = langObj.Single + ' ' + this.language + '\n' + this.code + '\n\n' + langObj.Start + '\n' + 'Explain what the ' + this.language + ' code does:';
+    }
     console.log(this.query)
   }
   // Perfoms openAI API Call and stores `response.data` result in #response
