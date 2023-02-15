@@ -55,22 +55,22 @@ const CodeBox = () => {
     <div>
       {/* Programming Language Button */}
       <DropdownButton onSelect = {handleLanguage} id = "language" title = {language ? language : 'Programming Language'}>
-        <Dropdown.Item eventKey="python">Python</Dropdown.Item>
-        <Dropdown.Item eventKey="javascript">Javascript</Dropdown.Item>
-        <Dropdown.Item eventKey="go">Go</Dropdown.Item>
-        <Dropdown.Item eventKey="perl">Perl</Dropdown.Item>
-        <Dropdown.Item eventKey="php">PHP</Dropdown.Item>
-        <Dropdown.Item eventKey="ruby">Ruby</Dropdown.Item>
-        <Dropdown.Item eventKey="swift">Swift</Dropdown.Item>
-        <Dropdown.Item eventKey="typescript">TypeScript</Dropdown.Item>
-        <Dropdown.Item eventKey="sql">SQL</Dropdown.Item>
-        <Dropdown.Item eventKey="shell">Shell</Dropdown.Item>
+        <Dropdown.Item eventKey="Python">Python</Dropdown.Item>
+        <Dropdown.Item eventKey="Javascript">Javascript</Dropdown.Item>
+        <Dropdown.Item eventKey="Go">Go</Dropdown.Item>
+        <Dropdown.Item eventKey="Perl">Perl</Dropdown.Item>
+        <Dropdown.Item eventKey="Php">PHP</Dropdown.Item>
+        <Dropdown.Item eventKey="Ruby">Ruby</Dropdown.Item>
+        <Dropdown.Item eventKey="Swift">Swift</Dropdown.Item>
+        <Dropdown.Item eventKey="Typescript">TypeScript</Dropdown.Item>
+        <Dropdown.Item eventKey="Sql">SQL</Dropdown.Item>
+        <Dropdown.Item eventKey="Shell">Shell</Dropdown.Item>
       </DropdownButton>
 
       {/* Abstraction Level Button */}
       <DropdownButton onSelect = {handleLevel} id = "level" title = {level ? level : 'Detail Level'}>
-        <Dropdown.Item eventKey="low">Low</Dropdown.Item>
-        <Dropdown.Item eventKey="high">High</Dropdown.Item>
+        <Dropdown.Item eventKey="Low">Low</Dropdown.Item>
+        <Dropdown.Item eventKey="High">High</Dropdown.Item>
       </DropdownButton>
 
       {/* Submit Button */}

@@ -18,12 +18,11 @@ router.post('/', async (req, res) => {
   // TODO: Set query based off req.body
   try {
     let data = req.body;
-    console.log(data);
-
-    var test = new OpenAI('Python', '1', '2');
-    test.formQueryFromInputs();
-    await test.makeOpenAICall();
-    res.send(test.response);
+    
+    const obj = new OpenAI(data.language, data.level, data.code);
+    obj.formQueryFromInputs();
+    await obj.makeOpenAICall();
+    res.send(obj.response);
   } 
   catch (err) {
     console.log(err)
