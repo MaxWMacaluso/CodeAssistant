@@ -34,6 +34,8 @@ class OpenAI {
     this.#code = code;
     this.#query = '';
     this.#response = '';
+
+    this.formQueryFromInputs();
   }
 
   // GETTERS

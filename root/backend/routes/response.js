@@ -18,7 +18,6 @@ router.post('/', async (req, res) => {
   try {
     let data = req.body;
     const obj = new OpenAI(data.language, data.level, data.code);
-    obj.formQueryFromInputs();
     await obj.makeOpenAICall();
     
     res.send(obj.response);

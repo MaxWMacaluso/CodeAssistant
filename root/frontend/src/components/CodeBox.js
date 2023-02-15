@@ -47,6 +47,7 @@ const CodeBox = () => {
   }
 
   // Triggers on submit button click
+  // TODO: Only submit if PL, level, and code selected
   const handleSubmit = () => {
     setLoading(true);
   }
