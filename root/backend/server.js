@@ -21,8 +21,7 @@ app.use(cors({ origin: true, credentials: true }));
 // It is used for recognizing incoming objects as JSON objects
 app.use(express.json({ extended: false }));
 
-// TODO: Update route
-// Use defined routes
+// Use defined route
 app.use('/response', respRoute)
 
 app.get('/', (req, res) => res.send('Hello world!'));

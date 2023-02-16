@@ -23,8 +23,8 @@ router.post('/', async (req, res) => {
     res.send(obj.response);
   } 
   catch (err) {
-    console.log(err)
-    res.status(500).send('Something went wrong')
+    console.log(err);
+    res.status(500).send('Something went wrong');
   }
 });
 
